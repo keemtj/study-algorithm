@@ -40,19 +40,29 @@
   </div>
 
   <script>
+    const $counter = document.querySelector('.counter');
     const $increase = document.querySelector('.increase');
     const $decrease = document.querySelector('.decrease');
-    const $counter = document.querySelector('.counter');
 
-    let num = 0;
-    $increase.onclick = e => {
-      $counter.innerHTML = ++num;
-    };
-    $decrease.onclick = e => {
-      if (num <= 0) return;
-      $counter.innerHTML = --num;
-    };
+    const counter = (() => {
+      let num = 0;
+
+      return {
+        increase() {
+          num += 1
+          $counter.innerHTML += num;
+        },
+        decrease() {
+          if (num <= 0) return;
+          num -= 1;
+          $counter.innerHTML = num;
+        }
+      }
+    })();
     
+    $increase.onclick = counter.increase;
+    $decrease.onclick = counter.decrease;
+
   </script>
 </body>
 </html>
