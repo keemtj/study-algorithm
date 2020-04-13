@@ -46,19 +46,20 @@
     let min = 0;
     let sec = 0;
     let ms = 0;
-    // click 이벤트 발생시 setInterval 실행 / clearInterval 일시정지
+
     $control.onclick = () => {
       $control.textContent = $control.textContent === 'Pause' ? 'Restart' : 'Pause';
       const start = setInterval(() => {
         const minZero = min > 9 ? '' : '0';
         const secZero = sec > 9 ? '' : '0';
         const msZero = ms >= 9 ? '' : '0';
-        let clock = `${minZero}${min}:${secZero}${sec}:${msZero}${ms >= 99 ? ms = '0' + (ms - 99) : ++ms}`
+        ms = ms >= 99 ? ms = '0' + (ms - 99) : ++ms;
+        let clock = `${minZero}${min}:${secZero}${sec}:${msZero}${ms}`
         if (ms === 99) sec === 59 ? sec = sec - 59 : sec++;
         if (ms === 99 && sec === 00) min === 59 ? min = min - 59 : min++;
         $display.innerHTML = clock;
         if ($control.textContent === 'Restart') clearInterval(start);
-      }, 4);
+      }, 10);
     }
   </script>
 </body>
