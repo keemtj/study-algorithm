@@ -10,7 +10,7 @@
  * ! #: 현재 점수 * (-1)
  * ? 총 3게임 (1게임: 점수|보너스|[옵션])
  */
-function solution(dartResult) {
+function solution1(dartResult) {
   let prevScore;
   let score = 0;
   let round = [];
@@ -75,7 +75,33 @@ function solution(dartResult) {
   console.log(sum);
   return sum;
 }
-solution("1S2D*3T"); // 37
-// solution("1D2S#10S"); // 9
-// solution("1D2S0T"); // 3
-solution("1S*2T*3S"); // 23
+// solution1("1S2D*3T"); // 37
+// solution1("1D2S#10S"); // 9
+// solution1("1D2S0T"); // 3
+// solution1("1S*2T*3S"); // 23
+
+// ! regExp
+function solution2(dartResult) {
+  const bonus = { S: 1, D: 2, T: 3 };
+  const options = { "*": 2, "#": -1, "": 1 };
+  const regExp = /[\d]+[SDT][*#]?/g;
+  let darts = dartResult.match(regExp);
+
+  for (let i = 0; i < darts.length; i++) {
+    let split = darts[i].match(/([\d]+)([SDT])([*#]?)/),
+      score = Math.pow(split[1], bonus[split[2]]) * options[split[3]];
+    console.log(split);
+    if (split[3] === "*" && darts[i - 1]) darts[i - 1] *= options["*"];
+
+    darts[i] = score;
+  }
+
+  const answer = darts.reduce((a, b) => a + b);
+  console.log(answer);
+  return answer;
+}
+
+solution2("1S2D*3T"); // 37
+solution2("1D2S#10S"); // 9
+solution2("1D2S0T"); // 3
+solution2("1S*2T*3S"); // 23
