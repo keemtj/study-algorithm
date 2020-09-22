@@ -1,3 +1,4 @@
+// ! 완료
 // 직사각형의 나머지 좌표 구하기
 function solution(v) {
   const coordX = v
