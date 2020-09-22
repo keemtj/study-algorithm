@@ -8,8 +8,9 @@
  * 실패율이 같은 경우 작은 번호의 스테이지가 먼저 오도록 오름차순
  */
 function solution(N, stages) {
-  var answer = [];
-  let failureRate = stage1 / stage1.length;
+  console.log(N, stages);
+  const answer = [];
+  // let failureRate = stage1 / stage1.length;
   return answer;
 }
 
