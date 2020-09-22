@@ -1,0 +1,28 @@
+{
+  "name": "study-algorithm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keemtj/study-algorithm.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keemtj/study-algorithm/issues"
+  },
+  "homepage": "https://github.com/keemtj/study-algorithm#readme",
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0"
+  },
+  "devDependencies": {
+    "prettier": "2.1.2"
+  }
+}
