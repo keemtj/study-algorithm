@@ -9,7 +9,8 @@ function solution(s) {
   const string = s.toLowerCase();
   const p = [...string].filter(str => str === 'p').length;
   const y = [...string].filter(str => str === 'y').length;
-  return p === y ? true : false;
+  // return p === y ? true : false;
+  return p === y;
 }
 
 solution('pPoooyY');
@@ -19,4 +20,5 @@ solution('pPoooyY');
  * 1. String.prototype.toLowerCase(): 호출된 문자열을 소문자로 변환하여 반환
  * 2. 스프레드 연산자
  * 3. Array.prototype.filter()
+ * 4. 비교 연산자는 boolean값을 리턴한다
  */
