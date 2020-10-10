@@ -6,10 +6,19 @@
  */
 
 function solution(n) {
-  const arr = [];
+  let prime = [];
   for (let i = 2; i <= n; i++) {
-    arr.push(i);
+    let isPrime = true;
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        isPrime = false;
+      }
+    }
+    if (isPrime) {
+      prime.push(i);
+    }
   }
+  return prime.length;
 }
 
 solution(10); // 4 // [2, 3, 5, 7]
