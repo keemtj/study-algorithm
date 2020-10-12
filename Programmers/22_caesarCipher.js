@@ -6,6 +6,7 @@
  * 공백은 아무리 밀어도 공백이다
  */
 
+// 암호화
 function solution(s, n) {
   // const large = [
   //   'A',
@@ -66,7 +67,9 @@ function solution(s, n) {
  */
 
 solution('This is Caesar Cipher', 10);
+solution('I love you', 8);
 
+// 복호화
 function solution2(s, n) {
   const m = 26 - n;
   const large = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -87,3 +90,4 @@ function solution2(s, n) {
 }
 
 solution2('Drsc sc Mkockb Mszrob', 10);
+solution2('Q twdm gwc', 8);
