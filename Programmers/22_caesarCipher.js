@@ -36,26 +36,41 @@ function solution(s, n) {
   //   'Z',
   // ];
   // const small = large.map(l => l.toLowerCase());
-  const large = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const large = 'ABCDEFGHIJKLMNOPQRSTUVW';
   const small = 'abcdefghijklmnopqrstuvwxyz';
+  const largeLen = large.length;
+  const smallLen = small.length;
   const cipher = [...s]
     .map(str => {
-      if (str === ' ') return ' ';
+      if (str === ' ') return str;
       if (str === str.toUpperCase())
-        return large[(large.indexOf(str) + n) % 26];
+        return large[(large.indexOf(str) + n) % largeLen];
       if (str === str.toLowerCase())
-        return small[(small.indexOf(str) + n) % 26];
+        return small[(small.indexOf(str) + n) % smallLen];
     })
     .join('');
   console.log(cipher);
   return cipher;
 }
-solution('ABCDE', 0);
-solution('ABCDE', 1);
-solution('ABCDE', 2);
-solution('ABCDE', 3);
-solution('ABCDE', 4);
-solution('ABCDE', 5);
+
+/**
+ * 풀이
+ * 1. large 배열, small 배열
+ * 2. Array.prototype.map(): 주어진 s를 순회하면서 조건에 맞게 리턴
+ * 3. Array.prototype.indexOf()
+ * 4. String.prototype.toUpperCase(): 대문자
+ * 5. String.prototype.toLowerCase(): 소문자
+ * 6. 주어진 n값에 맞게 알파벳의 순서를 바꿔 줄 수 있도록 index를 입력
+ *    n의 값이 무한정으로 올라가도 계속해서 알파벳의 순서를 바꿔줄 수 있다
+ * 7. large, small의 length를 변수로 두어 각각의 값이 바뀌어도 원하는 값을 리턴할 수 있다
+ */
+
+solution('A BCDE', 0);
+solution('A BCDE', 1);
+solution('A BCDE', 2);
+solution('A BCDE', 3);
+solution('A BCDE', 4);
+solution('A BCDE', 5);
 solution('ABCDE', 6);
 solution('ABCDE', 7);
 solution('ABCDE', 8);
