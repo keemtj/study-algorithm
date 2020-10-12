@@ -36,7 +36,7 @@ function solution(s, n) {
   //   'Z',
   // ];
   // const small = large.map(l => l.toLowerCase());
-  const large = 'ABCDEFGHIJKLMNOPQRSTUVW';
+  const large = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const small = 'abcdefghijklmnopqrstuvwxyz';
   const largeLen = large.length;
   const smallLen = small.length;
@@ -65,55 +65,25 @@ function solution(s, n) {
  * 7. large, small의 length를 변수로 두어 각각의 값이 바뀌어도 원하는 값을 리턴할 수 있다
  */
 
-solution('A BCDE', 0);
-solution('A BCDE', 1);
-solution('A BCDE', 2);
-solution('A BCDE', 3);
-solution('A BCDE', 4);
-solution('A BCDE', 5);
-solution('ABCDE', 6);
-solution('ABCDE', 7);
-solution('ABCDE', 8);
-solution('ABCDE', 9);
-solution('ABCDE', 10);
-solution('ABCDE', 11);
-solution('ABCDE', 12);
-solution('ABCDE', 13);
-solution('ABCDE', 14);
-solution('ABCDE', 15);
-solution('ABCDE', 16);
-solution('ABCDE', 17);
-solution('ABCDE', 18);
-solution('ABCDE', 19);
-solution('ABCDE', 20);
-solution('ABCDE', 21);
-solution('ABCDE', 22);
-solution('ABCDE', 23);
-solution('ABCDE', 24);
-solution('ABCDE', 25);
-solution('abcde', 0);
-solution('abcde', 1);
-solution('abcde', 2);
-solution('abcde', 3);
-solution('abcde', 4);
-solution('abcde', 5);
-solution('abcde', 6);
-solution('abcde', 7);
-solution('abcde', 8);
-solution('abcde', 9);
-solution('abcde', 10);
-solution('abcde', 11);
-solution('abcde', 12);
-solution('abcde', 13);
-solution('abcde', 14);
-solution('abcde', 15);
-solution('abcde', 16);
-solution('abcde', 17);
-solution('abcde', 18);
-solution('abcde', 19);
-solution('abcde', 20);
-solution('abcde', 21);
-solution('abcde', 22);
-solution('abcde', 23);
-solution('abcde', 24);
-solution('abcde', 25);
+solution('This is Caesar Cipher', 10);
+
+function solution2(s, n) {
+  const m = 26 - n;
+  const large = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const small = 'abcdefghijklmnopqrstuvwxyz';
+  const largeLen = large.length;
+  const smallLen = small.length;
+  const cipher = [...s]
+    .map(str => {
+      if (str === ' ') return str;
+      if (str === str.toUpperCase())
+        return large[(large.indexOf(str) + m) % largeLen];
+      if (str === str.toLowerCase())
+        return small[(small.indexOf(str) + m) % smallLen];
+    })
+    .join('');
+  console.log(cipher);
+  return cipher;
+}
+
+solution2('Drsc sc Mkockb Mszrob', 10);
