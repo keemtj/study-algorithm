@@ -28,3 +28,18 @@ solution([1, 3, 2, 5, 4], 9); // 3(최대 3개의 부서에 물품지원이 가�
  * 2. Array.prototype.filter(): 콜백함수의 조건이 true인, 즉 예산을 받을 수 있는 부서만 filtering하여 리턴한다
  * 3. filter 메소드를 통해 새로 반환된 배열의 길이(length), 즉 부서의 개수를 구한다
  */
+
+function solution2(d, budget) {
+  return d
+    .sort((a, b) => a - b)
+    .filter(v => {
+      budget -= v;
+      return budget >= 0;
+    }).length;
+}
+
+solution2([1, 3, 2, 5, 4], 9);
+
+/**
+ * 메서드 체이닝으로 한줄로 표현
+ */
