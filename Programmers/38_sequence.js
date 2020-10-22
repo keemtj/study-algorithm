@@ -30,7 +30,7 @@ function solution2(x, n) {
 solution2(-2, 5);
 
 /**
- * 풀이2
+ * 풀이2(ES6)
  * 1. Array.from: 유사배열객체, 이터러블 객체를 얕은 복사하여 새로운 Array객체를 만든다
  * Array.from(arrayLike[, mapFn[, thisArg]])
  * 2. 시퀀스 생성(range)
