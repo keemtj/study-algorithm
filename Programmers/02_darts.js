@@ -13,27 +13,37 @@
  */
 
 function solution(dartResult) {
-  const regSplitGames = /[0-9]+[SDT][*#]?/g;
-  const splitGames = dartResult.match(regSplitGames);
-  console.log(splitGames);
-  const regScore = /[0-9]+/g;
-  const regBonus = /[SDT]+/g;
-  const regOption = /[*#]+/g;
-  let board = [];
-  let eachScore = [];
+  const regexp = /[0-9]+[SDT][*#]?/g;
+  const darts = dartResult.match(regexp);
+  let score = [];
+  let bonus = [];
+  let option = [];
+  const bonusObj = { S: 1, D: 2, T: 3 };
+  const optionObj = { '*': 2, '#': -1 };
 
-  for (let i = 0; i < splitGames.length; i++) {
-    const score = splitGames[i].match(regScore)[0];
-    const bonus = splitGames[i].match(regBonus)[0];
-    const option = splitGames[i].match(regOption)?.[0];
-    board.push({
-      score: parseInt(score, 10),
-      bonus: bonus === 'S' ? 1 : bonus === 'D' ? 2 : 3,
-      option: option === '*' ? 2 : option === '#' ? -1 : 1,
-    });
-    eachScore.push(board[i].score ** board[i].bonus * board[i].option);
+  for (let i = 0; i < darts.length; i++) {
+    score.push(parseInt(darts[i].match(/[0-9]+/)[0], 10));
+    bonus.push(darts[i].match(/[SDT]/)[0]);
+    darts[i].match(/[*#]+/)
+      ? option.push(darts[i].match(/[*#]+/)[0])
+      : option.push(1);
   }
-  console.log(eachScore);
+
+  console.log(score, bonus, option);
+  for (let i = 0; i < score.length; i++) {
+    score[i] **= bonusObj[bonus[i]];
+    if (option[i] === '*') {
+      score[i] *= optionObj[option[i]];
+      score[i - 1] *= optionObj[option[i]];
+    } else if (option[i] === '#') {
+      score[i] *= optionObj[option[i]];
+    } else {
+      score[i] *= 1;
+    }
+  }
+
+  const sum = score.reduce((a, b) => a + b, 0);
+  return sum;
 }
 
-solution('1S2D*3T'); // 37
+solution('1S2D*3T#'); // 37
