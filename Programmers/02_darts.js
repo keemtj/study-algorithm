@@ -47,3 +47,14 @@ function solution(dartResult) {
 }
 
 solution('1S2D*3T#'); // 37
+
+/**
+ * 풀이
+ * 1. 정규표현식
+ * 2. score, bonus, option, bonusObj, optionObj로 구분
+ * 3. 점수 계산
+ *
+ * 정규표현식을 사용하지 않고 해결하면 score, bonus, option을 구분하는데 있어서 비교해야되는 조건이 엄청 많아진다
+ * 정규표현식에 대한 최소한의 공부는 필요하다고 느꼈다
+ * score, bonus, option, bonusObj, optionObj로 구분하였는데 이 방법보다 좋은 방법이 있는지 더 생각해봐야 할 듯 하다
+ */
