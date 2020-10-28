@@ -6,12 +6,7 @@
  * 사라진 인형의 갯수를 리턴
  */
 
-function solution(board, moves) {
-  // 옮긴 인형이 쌓이는 스택
-  let stack = [];
-  // 크레인이 움직일 수 있는 횟수
-  for (let i = 0; i < moves.length; i++) {}
-}
+function solution(board, moves) {}
 
 solution(
   [
