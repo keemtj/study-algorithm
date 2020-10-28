@@ -6,7 +6,43 @@
  * 사라진 인형의 갯수를 리턴
  */
 
-function solution(board, moves) {}
+/**
+ * 풀이
+ * 1. moves의 요소값 - 1: board의 세로라인
+ * 2. 인형pickup: 0이 아닌 가장 처음 값을 선택(가장 위에 있는 인형)
+ * 2-1. 선택된 값은 board배열에서 0으로 치환
+ * 3. stack에 인형 push
+ */
+function pickup(board, move) {
+  // move: 0 ~ 4(크레인 위치)
+  for (let i = 0; i < board.length; i++) {
+    if (board[i][move] !== 0) {
+      const doll = board[i][move];
+      console.log('picked it up', doll);
+      board[i][move] = 0;
+      return doll;
+    }
+  }
+}
+
+function solution(board, moves) {
+  let stack = [];
+  let result = 0;
+  for (let i = 0; i < moves.length; i++) {
+    const doll = pickup(board, moves[i] - 1);
+    if (!doll) continue;
+    if (stack[stack.length - 1] !== doll) {
+      stack.push(doll);
+      console.log('stack', stack);
+    } else {
+      stack.pop();
+      result += 2;
+      console.log('stack', stack);
+      console.log('result', result);
+    }
+  }
+  return result;
+}
 
 solution(
   [
