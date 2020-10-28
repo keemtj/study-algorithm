@@ -40,7 +40,7 @@ solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
  * 1. Array.prototype.map()
  * 2. Number.prototype.toString(): numObj.toString([radix]), 진수를 나타내는 기수의 값 radix(2~36)를 넣어 변환 할 수 있다
  * 3. String.prototype.repeat(): str.repeat(count), str을 count만큼 반복하여 붙인 새로운 문자열을 반환한다
- * 4. parseInt(): parseInt(string, radix), string을 radix에 맞게 숫자로 변환해준다(기본값이 10이 아님에 주의한다)
+ * 4. parseInt(): parseInt(string, radix), string이 표현하는 정수를 나타내는 radix(2~36사이의 진수)에 맞게 정수로 변환해준다(기본값이 10이 아님에 주의한다)
  * 5. Array.prototype.join(): arr.join([separator]), separator로 구분된 하나의 문자열로 반환한다
  *
  * 참고
