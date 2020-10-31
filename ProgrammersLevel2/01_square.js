@@ -39,4 +39,6 @@ solution(1, 4);
  * 2*3(서로소)
  * oxx -> oox -> 가로길이 + 세로길이 - 1
  * xxo -> xxx
+ *
+ * 출처: https://m.blog.naver.com/PostView.nhn?blogId=zzinuhelios&logNo=120024685950&proxyReferer=https:%2F%2Fwww.google.com%2F
  */
