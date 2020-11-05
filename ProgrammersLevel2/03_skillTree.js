@@ -7,13 +7,23 @@
  * 선행스킬순서(skill), 유저의 스킬트리(skill_trees), 가능한 스킬트리 개수를 리턴
  */
 
+// function solution(skill, skill_trees) {
+//   let answer = [];
+//   let user = '';
+//   for (let i = 0; i < skill_trees.length; i++) {
+//     user = [...skill_trees[i]].filter(v => skill.includes(v)).join('');
+//     [...skill].slice(0, user.length).join('') === user && answer.push(true);
+//   }
+//   return answer.length;
+// }
+
 function solution(skill, skill_trees) {
   let answer = [];
   let user = '';
-  for (let i = 0; i < skill_trees.length; i++) {
-    user = [...skill_trees[i]].filter(v => skill.includes(v)).join('');
+  skill_trees.forEach(st => {
+    user = [...st].filter(s => skill.includes(s)).join('');
     [...skill].slice(0, user.length).join('') === user && answer.push(true);
-  }
+  });
   return answer.length;
 }
 
