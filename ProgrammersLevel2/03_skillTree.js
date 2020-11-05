@@ -20,5 +20,10 @@ function solution(skill, skill_trees) {
 solution('CBD', ['BACDE', 'CBADF', 'AECB', 'BDA']);
 
 /**
+ * 풀이
  * C -> B -> D (순서가 중요 === index로 비교?)
+ * 처음에는 두 배열의 인덱스만 비교하려 했으나 과정이 복잡하여 코드를 전부 지우고 새로 생각했다
+ * 단순하게 string === string으로 비교할 경우 true, false로 확실하게 알 수 있기 때문에 그 방식을 사용했다
+ * skill이 skill_trees에서 각각의 skill_tree를 포함하고 있는 것만 따로 filtering한 결과를 user의 스킬트리로 구성했다
+ * user의 스킬트리와 주어진 스킬트리의 길이를 일치시켜(= 'ABC'스킬순서에서 유저가 'AB'스킬을 배웠을 경우, 길이를 일치시켜 'AB'스킬순서, 'AB' 유저스킬순서) 두 결과를 비교한뒤 일치하는 결과만 리턴했다
  */
