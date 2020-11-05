@@ -7,25 +7,9 @@
  * 선행스킬순서(skill), 유저의 스킬트리(skill_trees), 가능한 스킬트리 개수를 리턴
  */
 
-function solution(skill, skill_trees) {
-  let order = {};
-  for (let i = 0; i < skill.length; i++) {
-    order[skill[i]] = i + 1;
-  }
+function solution(skill, skill_trees) {}
 
-  let answer = 0;
-  skill_trees.forEach(st => {
-    const index = [...st].map(s => order[s]).filter(v => v);
-    console.log(index, index[0]);
-    if (index[0] !== 1) {
-    } else {
-    }
-  });
-  console.log(answer);
-  return answer;
-}
-
-solution('AB', ['BACDE', 'CBADF', 'AECB', 'BDA']);
+solution('DA', ['BACDE', 'CBADF', 'AECB', 'BDA']);
 
 /**
  * C -> B -> D (순서가 중요 === index로 비교?)
