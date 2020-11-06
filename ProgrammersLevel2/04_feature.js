@@ -28,27 +28,41 @@ function solution(progresses, speeds) {
   for (let i = 0; i < progresses.length; i++) {
     dates.push(recursive(progresses[i], speeds[i], 0));
   }
-  console.log(dates);
+
   let answer = [];
   let count = 1;
-  dates.reduce((acc, cur) => {
-    console.log(acc, cur);
-    if (acc >= cur) {
+  let temp = dates[0];
+  for (let i = 0; i < dates.length; i++) {
+    if (temp >= dates[i + 1]) {
       count += 1;
-      return cur;
     } else {
-      acc = cur;
-      return acc;
+      temp = dates[i + 1];
+      answer.push(count);
+      count = 1;
     }
-  }, dates[0]);
+  }
   console.log(answer);
+  return answer;
 }
-
-// solution([93, 30, 55], [1, 30, 5]); // [2, 1]
+/**
+ * acc cur 조건 count
+ * 5 5 acc === cur 0
+ * 5 10 acc < cur 1 cur = acc
+ * 10 1
+ * 1 1 t 1
+ *
+ *
+ */
+solution([93, 30, 55], [1, 30, 5]); // [2, 1]
 solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]); // [1, 3, 2]
-// solution([96, 99, 98, 97], [1, 1, 1, 1]); // [4]
 
 /**
  * else에서 return recursive를 해주셔야졍
  * 함수가 호출되는 스콥이 다르니까 마지막에서의 return date는 실제로 저 함수를 호출한 레퍼런스에서 리턴되지 않아영
+ *
+ * 풀이
+ * 1. progresses가 작업을 완료하기까지 걸리는 시간을 recursive 함수를 통해 리턴
+ * 2. dates 배열에서 서로 날짜를 비교하여
+ * 2-1. prev값이 next값보다 크거나 같으면 카운트
+ * 2-2. prev값이 next값보다 작으면 비교 기준이 되는 날짜를 새로 재할당, counted값 push, count 초기화
  */
