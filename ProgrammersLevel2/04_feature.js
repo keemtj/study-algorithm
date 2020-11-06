@@ -44,15 +44,7 @@ function solution(progresses, speeds) {
   console.log(answer);
   return answer;
 }
-/**
- * acc cur 조건 count
- * 5 5 acc === cur 0
- * 5 10 acc < cur 1 cur = acc
- * 10 1
- * 1 1 t 1
- *
- *
- */
+
 solution([93, 30, 55], [1, 30, 5]); // [2, 1]
 solution([95, 90, 99, 99, 80, 99], [1, 1, 1, 1, 1, 1]); // [1, 3, 2]
 
