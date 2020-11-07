@@ -13,39 +13,10 @@
  * * time: elapsed time
  * * passing: trucks passing the bridge
  * * bridge_weight: sum of truck weight
+ * * truck = waiting truck
  */
 
-function solution(bridge_length, weight, truck_weights) {
-  let time = 1;
-  let passing = Array.from({ length: bridge_length }, () => 0);
-  let bridge_weight = 0;
-  passing[0] = truck_weights.shift();
-  bridge_weight = passing.reduce((a, b) => a + b, 0);
-  console.log('다리 위 상태:', passing);
-  console.log('다리 위 무게:', bridge_weight);
-  console.log('대기 중 트럭:', truck_weights[0]);
-  console.log('------------------------------');
-
-  while (time < 10) {
-    if (bridge_weight + truck_weights[0] > weight) {
-      if (passing.length > bridge_length) {
-        passing.unshift(truck_weights.shift());
-        passing.pop();
-        time += 1;
-      }
-      passing.unshift(0);
-      time += 1;
-      console.log('다리 위 상태:', passing);
-    }
-    // else if (bridge_weight + truck_weights[0] <= weight) {
-    //   passing.push(truck_weights.shift());
-    //   passing.pop();
-    //   console.log('다리 위 상태:', passing);
-    //   console.log('다리 위 무게:', bridge_weight);
-    //   console.log('대기 중 트럭:', truck_weights[0]);
-    // }
-  }
-}
+function solution(bridge_length, weight, truck_weights) {}
 
 solution(2, 10, [7, 4, 5, 6]); // 8
 // solution(100, 100, [10]); // 101
