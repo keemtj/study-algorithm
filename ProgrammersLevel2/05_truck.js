@@ -11,12 +11,35 @@
 
 /**
  * * time: elapsed time
- * * passing: trucks passing the bridge
+ * * bridge_state: trucks passing the bridge
  * * bridge_weight: sum of truck weight
  * * truck = waiting truck
  */
 
-function solution(bridge_length, weight, truck_weights) {}
+function solution(bridge_length, weight, truck_weights) {
+  let time = 1;
+  let bridge_state = Array.from({ length: bridge_length }, () => 0);
+  let bridge_weight = 0;
+  let truck = truck_weights.shift();
+
+  bridge_state.unshift(truck);
+  bridge_state.pop();
+  bridge_weight += truck;
+
+  while (bridge_weight) {
+    bridge_weight -= bridge_state.pop();
+    truck = truck_weights.shift();
+    if (bridge_weight + truck <= weight) {
+      bridge_state.unshift(truck);
+      bridge_weight += truck;
+    } else {
+      bridge_state.unshift(0);
+      truck = truck_weights.unshift(truck);
+    }
+    time += 1;
+  }
+  return time;
+}
 
 solution(2, 10, [7, 4, 5, 6]); // 8
 // solution(100, 100, [10]); // 101
