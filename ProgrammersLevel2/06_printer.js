@@ -21,34 +21,25 @@
  */
 
 function solution(priorities, location) {
-  const request = priorities[location]; // 요청 문서
-  console.log(request, location);
-  for (let i = 0; i < priorities.length; i++) {
-    priorities[i] = {
-      value: priorities[i],
-      request: i === location,
-    };
-  }
-  console.log(priorities);
+  priorities = priorities.map((v, i) => {
+    return { value: v, request: i === location };
+  });
 
   let order = [];
 
   while (priorities.length) {
     let J = priorities.shift();
-    // console.log('**** J:', J);
-    if (priorities.some(v => v.value > J.value)) {
+    let hasPriority = priorities.some(v => v.value > J.value);
+    if (hasPriority) {
       priorities.push(J);
-      // console.log('true?', priorities, order);
     } else {
       order.push(J);
-      // console.log('false?', priorities, order);
     }
   }
-  console.log(order);
+
   const answer = order.indexOf(order.find(v => v.request)) + 1;
-  console.log(answer);
   return answer;
 }
 
 solution([2, 1, 3, 2], 2); // 1
-// solution([2, 2, 2, 2], 3);
+solution([2, 2, 2, 2], 3); // 4
