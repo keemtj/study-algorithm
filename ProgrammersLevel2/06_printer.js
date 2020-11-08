@@ -8,12 +8,46 @@
  * 3. 그렇지 않으면 J를 인쇄합니다
  *
  * 인쇄물: A, B, C, D
- * 중요도: 2, 1, 3, 2
- * 순서상: C, D, A, B
+ * 중요도: 2, 1, 3, 2 (1~9, 숫자가 클수록 중요)
+ * 인쇄순: C, D, A, B
+ * location: 2
+ *
+ * C는 1번, A는 3번째로 인쇄
+ *
+ * priorities: 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열
+ * location: 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지 알려주는 매개변수
+ * (0~대기목록에 있는 작업수 - 1)
+ * 내가 인쇄를 요청한 문서가 몇번째 인쇄되는지 return
  */
 
 function solution(priorities, location) {
-  return 0;
+  let request = priorities[location]; // 요청 문서
+  for (let i = 0; i < priorities.length; i++) {
+    priorities[i] = {
+      value: priorities[i],
+      request: priorities[i] === request,
+    };
+  }
+
+  let order = [];
+
+  while (priorities.length) {
+    let J = priorities.shift();
+    console.log('**** J:', J);
+    if (priorities.some(v => v.value > J.value)) {
+      priorities.push(J);
+      console.log('true?', priorities, order);
+    } else {
+      order.push(J);
+      console.log('false?', priorities, order);
+    }
+  }
+  const answer = order.indexOf(order.find(v => v.request)) + 1;
+  return answer;
 }
 
-solution();
+solution([2, 1, 3, 2], 2); // 1
+/**
+ * location = 대기목록의 인덱스값 index
+ * priorites배열의 location 2번은 3중요도를 갖고 있는 문서이다. 이 문서는 1번째로 인쇄된다(return 1)
+ */
