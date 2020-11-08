@@ -22,12 +22,11 @@
 
 function solution(priorities, location) {
   const request = priorities[location]; // 요청 문서
-  const index = priorities.indexOf(request); // 요청 문서의 인덱스
+  console.log(request, location);
   for (let i = 0; i < priorities.length; i++) {
     priorities[i] = {
       value: priorities[i],
-      index: priorities.indexOf(priorities[i]),
-      request: i === index && priorities[i] === request,
+      request: i === location,
     };
   }
   console.log(priorities);
@@ -36,19 +35,20 @@ function solution(priorities, location) {
 
   while (priorities.length) {
     let J = priorities.shift();
-    console.log('**** J:', J);
+    // console.log('**** J:', J);
     if (priorities.some(v => v.value > J.value)) {
       priorities.push(J);
-      console.log('true?', priorities, order);
+      // console.log('true?', priorities, order);
     } else {
       order.push(J);
-      console.log('false?', priorities, order);
+      // console.log('false?', priorities, order);
     }
   }
+  console.log(order);
   const answer = order.indexOf(order.find(v => v.request)) + 1;
   console.log(answer);
   return answer;
 }
 
-// solution([2, 1, 3, 2], 2); // 1
-solution([1, 1, 9, 1, 1, 1], 0); // 5
+solution([2, 1, 3, 2], 2); // 1
+// solution([2, 2, 2, 2], 3);
