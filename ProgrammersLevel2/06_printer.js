@@ -21,6 +21,8 @@
  */
 
 function solution(priorities, location) {
+  // const request = priorities[location];
+  // const index = priorities.indexOf(request);
   priorities = priorities.map((v, i) => {
     return { value: v, request: i === location };
   });
@@ -43,3 +45,21 @@ function solution(priorities, location) {
 
 solution([2, 1, 3, 2], 2); // 1
 solution([2, 2, 2, 2], 3); // 4
+
+/**
+ * 풀이
+ * 
+ * 처음에 문제 자체를 이해를 못하고 있다가.. 생각보다 친절하게 1,2,3번 순서대로 하면 된다는걸 문제를 여러번 읽고 깨달았다
+ * const request = priorities[location];
+ * const index = priorities.indexOf(request);
+ * 초기에 설정한 이 변수 때문에 중복값에 대한 정확한 location을 찾지 못해서 계속 테스트 케이스를 헤매다가
+ * console.log로 계속적인 디버깅을 하면서 알게되었다..
+ * indexOf는 첫번째 값의 인덱스만 가져온다는것을 알고 아래의 로직을 수정해주었다
+ * 처음에는 for문이었으나 map메소드로 로직을 간단하게 했다
+ * priorities = priorities.map((v, i) => {
+    // return { value: v, request: i === index };
+    return { value: v, request: i === location };
+  });
+ * 
+ * 큐/스택, indexOf, map, some 
+ */
