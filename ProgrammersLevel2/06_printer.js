@@ -21,13 +21,16 @@
  */
 
 function solution(priorities, location) {
-  let request = priorities[location]; // 요청 문서
+  const request = priorities[location]; // 요청 문서
+  const index = priorities.indexOf(request); // 요청 문서의 인덱스
   for (let i = 0; i < priorities.length; i++) {
     priorities[i] = {
       value: priorities[i],
-      request: priorities[i] === request,
+      index: priorities.indexOf(priorities[i]),
+      request: i === index && priorities[i] === request,
     };
   }
+  console.log(priorities);
 
   let order = [];
 
@@ -43,11 +46,9 @@ function solution(priorities, location) {
     }
   }
   const answer = order.indexOf(order.find(v => v.request)) + 1;
+  console.log(answer);
   return answer;
 }
 
-solution([2, 1, 3, 2], 2); // 1
-/**
- * location = 대기목록의 인덱스값 index
- * priorites배열의 location 2번은 3중요도를 갖고 있는 문서이다. 이 문서는 1번째로 인쇄된다(return 1)
- */
+// solution([2, 1, 3, 2], 2); // 1
+solution([1, 1, 9, 1, 1, 1], 0); // 5
