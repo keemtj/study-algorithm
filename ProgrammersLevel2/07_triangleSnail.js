@@ -52,12 +52,53 @@ function solution(n) {
   return answer;
 }
 
-solution(6); // [1,2,9,3,10,8,4,5,6,7]
+function solution2(n) {
+  let triangle = [];
+  for (let i = 0; i < n; i++) {
+    triangle.push(Array.from({ length: i + 1 }));
+  }
+
+  let row = -1;
+  let col = 0;
+  let num = 1;
+  for (let i = n; i > 0; i -= 3) {
+    console.log(i);
+    triangle[++row][col] = num++;
+    console.log(triangle);
+
+    for (let j = 0; j < i - 1; j++) {
+      triangle[++row][col] = num++;
+    }
+    console.log(triangle);
+    for (let j = 0; j < i - 1; j++) {
+      triangle[row][++col] = num++;
+    }
+    console.log(triangle);
+    for (let j = 0; j < i - 2; j++) {
+      triangle[--row][--col] = num++;
+    }
+    console.log(triangle);
+  }
+  console.log(triangle);
+  return triangle.flat();
+}
+solution2(5); // [1,2,9,3,10,8,4,5,6,7]
 
 /**
  * 풀이
- * 1. 정삼각형을 직각삼각형의 형태로 생각
+ * 1. 정삼각형을 왼쪽으로 밀어 직각삼각형의 형태로 생각
  * 2. 세로줄, 가로줄, 대각선줄에 순차적으로 num값을 넣는다
- * 세로줄: 세로줄을 다 채울 경우 다음 세로줄은 column과 row가 1씩 증가(++)
- * 가로줄: 가로줄을 다 채울 경우 다음 가로줄은 row(--), column
+ * 3. 시작열과 끝열이 같아지고, 시작행과 끝행이 같아지는 순간에 반복문을 끝낸다
+ * 2차원 배열
+ * 세로줄 = 열 = row => [1, 2, 3] / [4, 5, 6] / [7, 8, 9]
+ * 가로줄 = 행 = column => row1 => 1, 2, 3 / row2 => 4, 5, 6 / row3 => 7, 8, 9
+ * => arr[row][column]
+ * [
+ *  [1, 2, 3],
+ *  [4, 5, 6],
+ *  [7, 8, 9],
+ * ]
+ *
+ * 참고
+ * sprial matrix
  */
