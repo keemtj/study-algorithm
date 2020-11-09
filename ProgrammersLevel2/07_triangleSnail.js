@@ -9,43 +9,28 @@
 function solution(n) {
   let triangle = [];
   for (let i = 0; i < n; i++) {
-    triangle.push(Array.from({ length: i + 1 }));
+    triangle.push(Array.from({ length: i + 1 }, v => (v = '0')));
   }
 
   const len = triangle.flatMap(v => v).length;
 
   let num = 1;
+  // start와 end로 숫자가 채워지는 길이를 결정(index)
   let start = 0;
   let end = n - 1;
+  // column과 row로 spiral로 삼각형의 크기가 작아지는 상황을 결정
   let column = 0;
   let row = n - 1;
 
-  while (true) {
-    for (let i = start; i <= end; i++) {
-      triangle[i][column] = num;
-      num += 1;
-    }
-    if (num > len) break;
-    start += 1;
-
-    for (let i = start; i <= end; i++) {
-      triangle[row][i] = num;
-      num += 1;
-    }
-    if (num > len) break;
-    end -= 1;
-    row -= 1;
-
-    for (let i = end; i >= start; i--) {
-      triangle[i][i] = num;
-      num += 1;
-    }
-    if (num > len) break;
-    start += 1;
-    column += 1;
-    row -= 1;
-  }
+  // triangle[세로라인][가로라인]
+  triangle.map(v => {});
   return [];
 }
 
-solution(6); // [1,2,9,3,10,8,4,5,6,7]
+solution(5); // [1,2,9,3,10,8,4,5,6,7]
+
+/**
+ * 풀이
+ * 1. 정삼각형을 직각삼각형의 형태로 생각
+ * 2. 세로줄, 가로줄, 대각선줄에 순차적으로 num값을 넣는다
+ */
