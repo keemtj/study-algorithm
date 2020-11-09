@@ -11,26 +11,53 @@ function solution(n) {
   for (let i = 0; i < n; i++) {
     triangle.push(Array.from({ length: i + 1 }, v => (v = '0')));
   }
-
   const len = triangle.flatMap(v => v).length;
-
+  console.log(len);
   let num = 1;
-  // start와 end로 숫자가 채워지는 길이를 결정(index)
-  let start = 0;
-  let end = n - 1;
-  // column과 row로 spiral로 삼각형의 크기가 작아지는 상황을 결정
-  let column = 0;
-  let row = n - 1;
+  // 세로줄
+  let startRow = 0;
+  let endRow = n - 1;
 
-  // triangle[세로라인][가로라인]
-  triangle.map(v => {});
-  return [];
+  // 가로줄
+  let startColumn = 0;
+  let endColumn = n - 1;
+
+  let round = 0;
+
+  while (startColumn <= endColumn && startRow <= endRow) {
+    // 세로줄
+    for (let i = startRow; i <= endRow; i++) {
+      triangle[i][startColumn] = num;
+      num += 1;
+    }
+    startRow += 1;
+    startColumn += 1;
+    // 가로줄
+    for (let i = startColumn; i <= endColumn; i++) {
+      triangle[endRow][i] = num;
+      num += 1;
+    }
+    endColumn -= 1;
+    endRow -= 1;
+    // 대각선줄
+    for (let i = endRow; i >= startRow; i--) {
+      triangle[i][triangle[i].length - 1 - round] = num;
+      num += 1;
+    }
+    endColumn -= 1;
+    startRow += 1;
+    round += 1;
+  }
+  const answer = triangle.flat();
+  return answer;
 }
 
-solution(5); // [1,2,9,3,10,8,4,5,6,7]
+solution(6); // [1,2,9,3,10,8,4,5,6,7]
 
 /**
  * 풀이
  * 1. 정삼각형을 직각삼각형의 형태로 생각
  * 2. 세로줄, 가로줄, 대각선줄에 순차적으로 num값을 넣는다
+ * 세로줄: 세로줄을 다 채울 경우 다음 세로줄은 column과 row가 1씩 증가(++)
+ * 가로줄: 가로줄을 다 채울 경우 다음 가로줄은 row(--), column
  */
