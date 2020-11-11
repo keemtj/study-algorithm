@@ -15,28 +15,31 @@ function splitString(s, split) {
 }
 
 function solution(s) {
-  const maxSplit = Math.floor(s.length / 2);
+  const maxSplit = Math.floor(s.length / 2) + 1;
 
   let split = 1;
+  let result = [];
   while (split <= maxSplit) {
     const array = splitString(s, split);
-    let answer = [];
-    let temp = array[0];
     let count = 1;
-    array.forEach((v, i, arr) => {
-      if (temp === arr[i + 1]) {
+    let arr = [];
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === array[i + 1]) {
         count++;
-        console.log(count);
-      } else {
-        answer.push(`${count === 1 ? '' : count}${temp}`);
-        temp = v;
+      }
+      if (array[i] !== array[i + 1]) {
+        arr.push(`${count === 1 ? '' : count}${array[i]}`);
         count = 1;
       }
-    });
-    console.log(answer);
+    }
+    result.push(arr.join('').length);
     split++;
   }
-  return 0;
+
+  const answer = Math.min(...result);
+  console.log(answer);
+  return answer;
 }
 
+solution('a');
 solution('abcabcabcabcdededededede'); // 14
