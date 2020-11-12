@@ -12,5 +12,5 @@ function solution(s) {
   return answer;
 }
 
-solution('1234'); // 1234
+solution('+1234'); // 1234
 solution('-1234'); // -1234

@@ -12,6 +12,7 @@ function solution(a, b) {
   const answer = date
     .toLocaleDateString('en-US', { weekday: 'short' })
     .toUpperCase();
+  console.log(answer);
   return answer;
 }
 
