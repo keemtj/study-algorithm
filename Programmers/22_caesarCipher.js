@@ -44,8 +44,10 @@ function solution(s, n) {
   const cipher = [...s]
     .map(str => {
       if (str === ' ') return str;
-      if (str === str.toUpperCase())
+      if (str === str.toUpperCase()) {
+        console.log(str, (large.indexOf(str) + n) % largeLen);
         return large[(large.indexOf(str) + n) % largeLen];
+      }
       if (str === str.toLowerCase())
         return small[(small.indexOf(str) + n) % smallLen];
     })
@@ -71,7 +73,8 @@ solution('I love you', 8);
 
 // 복호화
 function solution2(s, n) {
-  const m = 26 - n;
+  // const m = 26 - n;
+  n = 26 - n;
   const large = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const small = 'abcdefghijklmnopqrstuvwxyz';
   const largeLen = large.length;
@@ -80,9 +83,9 @@ function solution2(s, n) {
     .map(str => {
       if (str === ' ') return str;
       if (str === str.toUpperCase())
-        return large[(large.indexOf(str) + m) % largeLen];
+        return large[(large.indexOf(str) + n) % largeLen];
       if (str === str.toLowerCase())
-        return small[(small.indexOf(str) + m) % smallLen];
+        return small[(small.indexOf(str) + n) % smallLen];
     })
     .join('');
   console.log(cipher);
