@@ -16,7 +16,7 @@ function solution(n) {
       }
     }
   }
-  console.log(primes.filter(v => v).length);
+  // console.log(primes.filter(v => v).length);
 }
 
 solution(10); // 4 // [2, 3, 5, 7]
@@ -45,20 +45,23 @@ solution2(10);
  * 주어진 값까지 루프를 돌면서 소수의 배수를 먼저 제거
  */
 
-function solution3(n) {
-  const arr = Array.from({ length: n - 1 }, (_, i) => (i = i + 2));
-  const result = arr.filter(number => {
-    let isPrime = true;
-    for (let i = 2; i < number; i++) {
-      if (number % i === 0) {
-        isPrime = false;
-        break;
-      }
+function isPrime(number) {
+  let isPrime = true;
+  for (let i = 2; i < number; i++) {
+    if (number % i === 0) {
+      isPrime = false;
+      break;
     }
-    return isPrime;
-  });
+  }
+  return isPrime;
+}
 
-  return result.length;
+function solution3(n) {
+  let arr = [];
+  for (let i = 2; i <= n; i++) {
+    arr.push(isPrime(i));
+  }
+  return arr.filter(v => v).length;
 }
 
 solution3(10);
