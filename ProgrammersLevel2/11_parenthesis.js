@@ -60,18 +60,16 @@ function solution(p) {
   if (p === '') return p;
   let u = uvSplit(p).u;
   let v = uvSplit(p).v;
-  console.log('split', u, v);
 
   let str = '';
   if (isCorrect([...u])) {
     v = solution(v);
     u += v;
-    console.log('1', u);
-    return u;
+    str = u;
+    return str;
   } else {
     v = solution(v);
     str = '(' + v + ')' + uTrans([...u]);
-    console.log('2', str);
     return str;
   }
 }
