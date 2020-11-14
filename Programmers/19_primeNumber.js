@@ -44,3 +44,21 @@ solution2(10);
  * 에라토스테네스의 체
  * 주어진 값까지 루프를 돌면서 소수의 배수를 먼저 제거
  */
+
+function solution3(n) {
+  const arr = Array.from({ length: n - 1 }, (_, i) => (i = i + 2));
+  const result = arr.filter(number => {
+    let isPrime = true;
+    for (let i = 2; i < number; i++) {
+      if (number % i === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    return isPrime;
+  });
+
+  return result.length;
+}
+
+solution3(10);
