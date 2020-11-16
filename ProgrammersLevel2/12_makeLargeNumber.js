@@ -7,7 +7,37 @@
  */
 
 function solution(number, k) {
-  return 0;
+  number = [...number];
+  let arr = [];
+  const num = number.shift();
+  arr.push(num);
+
+  while (number.length > 0) {
+    const num = number.shift();
+    console.log(arr[arr.length - 1], num, arr, k);
+    if (arr[arr.length - 1] < num) {
+      console.log('true동작');
+      arr.pop();
+      arr.push(num);
+      k--;
+    } else {
+      console.log('false동작');
+      arr.push(num);
+    }
+  }
+  arr[0] < arr[1] && arr.shift();
+  return arr.join('');
 }
 
+solution('1924', 2); // '94'
 solution('4177252841', 4); // return "775841"
+
+/**
+ * arr   < number
+ * ""(0) < 1      -> true   -> arr.pop(), arr.push(num) -> (처음에는 k 그대로)
+ * 1     < 9      -> true   -> arr.pop(), arr.push(num) -> k--
+ * 9     > 2      -> false  -> arr.push(num)
+ * 2     < 4      -> true   -> arr.pop(), arr.push(num) -> k--
+ *
+ * 위 방법봗 더 까다로운 조건 필요...아이패드에 흐름 그려보기
+ */
