@@ -88,16 +88,15 @@ console.time('loop time');
 // solution4('1924', 2); // '94'
 // solution4('1231234', 3); // '3234'
 // solution('4177252841', 4); // "775841"
-solution('322332', 3); // "99" // solution1 stackoverflow
+solution4('322332', 3); // "99" // solution1 stackoverflow
 
 console.timeEnd('loop time');
 
 /**
- * arr   < number
- * ""(0) < 1      -> true   -> arr.pop(), arr.push(num) -> (처음에는 k 그대로)
- * 1     < 9      -> true   -> arr.pop(), arr.push(num) -> k--
- * 9     > 2      -> false  -> arr.push(num)
- * 2     < 4      -> true   -> arr.pop(), arr.push(num) -> k--
+ * 풀이(solution4가 정답)
  *
- * 위 방법봗 더 까다로운 조건 필요...아이패드에 흐름 그려보기
+ * solution3이 정답과 거의 유사했지만.. 사실상 대실패
+ * 반복문(while)의 조건식 설정 실패
+ *
+ * 사람들 풀이 다시한번 보기
  */
