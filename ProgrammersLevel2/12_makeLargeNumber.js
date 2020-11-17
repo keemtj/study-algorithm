@@ -35,24 +35,60 @@ function solution(number, k) {
 function solution2(number, k) {
   let arr = [];
   for (let i = 0; i < number.length; i++) {
-    const num = number[i];
     for (let j = arr.length - 1; j >= 0; j--) {
-      if (arr[j] < num) {
+      if (arr[j] < number[i]) {
         if (k === 0) break;
         arr.pop();
         k--;
       }
     }
-    arr.push(num);
+    arr.push(number[i]);
   }
   return arr.join('');
 }
 
+function solution3(number, k) {
+  let arr = [];
+  for (let i = 0; i < number.length; i++) {
+    console.log('index:', i, 'k:', k);
+    if (arr[arr.length - 1] < number[i]) {
+      while (k > 0) {
+        arr.pop();
+        k--;
+      }
+    }
+    arr.push(number[i]);
+    // console.log('array:', arr, 'k:', k);
+  }
+  console.log(arr);
+  return arr.join('');
+}
+
+function solution4(number, k) {
+  let arr = [];
+  for (let i = 0; i < number.length; i++) {
+    const num = number[i];
+    while (k > 0 && arr[arr.length - 1] < num) {
+      arr.pop();
+      k--;
+    }
+    arr.push(num);
+  }
+  console.log(k);
+  if (k > 0) {
+    // arr = arr.slice(0, k);
+    console.log('true', arr);
+    arr.splice(arr.length - k, k);
+    return arr.join('');
+  }
+  console.log('false', arr);
+  return arr.join('');
+}
 console.time('loop time');
-// solution2('1924', 2); // '94'
-// solution2('1231234', 3); // '3234'
-// solution2('4177252841', 4); // "775841"
-solution2('999999999', 4); // "999999999"
+// solution4('1924', 2); // '94'
+// solution4('1231234', 3); // '3234'
+// solution('4177252841', 4); // "775841"
+solution('322332', 3); // "99" // solution1 stackoverflow
 
 console.timeEnd('loop time');
 
