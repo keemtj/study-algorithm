@@ -32,9 +32,28 @@ function solution(number, k) {
   return arr.join('');
 }
 
+function solution2(number, k) {
+  let arr = [];
+  for (let i = 0; i < number.length; i++) {
+    const num = number[i];
+    for (let j = arr.length - 1; j >= 0; j--) {
+      if (arr[j] < num) {
+        if (k === 0) break;
+        arr.pop();
+        k--;
+      }
+    }
+    arr.push(num);
+  }
+  return arr.join('');
+}
+
 console.time('loop time');
-// solution('1924', 2); // '94'
-solution('4177252841', 4); // return "775841"
+// solution2('1924', 2); // '94'
+// solution2('1231234', 3); // '3234'
+// solution2('4177252841', 4); // "775841"
+solution2('999999999', 4); // "999999999"
+
 console.timeEnd('loop time');
 
 /**
