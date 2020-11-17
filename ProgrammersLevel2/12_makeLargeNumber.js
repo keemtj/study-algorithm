@@ -9,28 +9,33 @@
 function solution(number, k) {
   number = [...number];
   let arr = [];
-  const num = number.shift();
+  let num = number.shift();
   arr.push(num);
-
-  while (number.length > 0) {
-    const num = number.shift();
-    console.log(arr[arr.length - 1], num, arr, k);
-    if (arr[arr.length - 1] < num) {
-      console.log('true동작');
-      arr.pop();
+  console.log(arr);
+  while (k > 0) {
+    num = number.shift();
+    if (arr[arr.length - 1] >= num) {
       arr.push(num);
-      k--;
-    } else {
-      console.log('false동작');
+    } else if (arr[arr.length - 1] < num) {
+      for (let i = arr.length - 1; i >= 0; i--) {
+        if (arr[i] < num) {
+          arr.pop();
+          k--;
+          if (k === 0) break;
+        }
+      }
       arr.push(num);
     }
   }
-  arr[0] < arr[1] && arr.shift();
+  arr = arr.concat(number);
+  console.log(arr);
   return arr.join('');
 }
 
-solution('1924', 2); // '94'
+console.time('loop time');
+// solution('1924', 2); // '94'
 solution('4177252841', 4); // return "775841"
+console.timeEnd('loop time');
 
 /**
  * arr   < number
