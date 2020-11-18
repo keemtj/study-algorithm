@@ -10,8 +10,40 @@
  */
 
 function solution(citations) {
-  let h = 0;
-  return 0;
+  const n = citations.length;
+  let min = Math.min(...citations);
+  if (n === 1) {
+    const thesis = min ? 1 : 0;
+    console.log('논문을 1편 발표했을 때 1번이상 인용된 논문', a);
+    return thesis;
+  }
+  if (min === n) {
+    console.log(min);
+    return n;
+  }
+  while (min <= n) {
+    const thesis = citations.filter(v => (v >= min ? v : false)).length;
+    console.log('인용횟수min:', min, 'min번 이상 인용된 논문', thesis);
+    if (min > thesis) {
+      min--;
+      break;
+    }
+    min++;
+  }
+  console.log(min);
+  return min;
 }
 
-solution([3, 0, 6, 1, 5]); // 3
+// solution([3, 0, 6, 3, 5]); // 3
+// solution([0, 0, 0, 0, 0]);
+// solution([1, 1, 1, 1, 1]);
+// solution([2, 2, 2, 2, 2]);
+// solution([3, 3, 3, 3, 3]);
+// solution([4, 4, 4, 4, 4]);
+solution([22, 42]);
+// solution([0]);
+// solution([1]);
+// solution([2]);
+// solution([3]);
+// solution([4]);
+// solution([5]);
