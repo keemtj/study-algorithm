@@ -5,16 +5,25 @@
 
 function solution(n) {
   const factor = [];
-  for (let i = 1; i <= n; i++) {
-    n % i === 0 && factor.push(i);
+  for (let i = 0; i <= n; i++) {
+    if (n % i === 0) factor.push(i);
   }
   const sum = factor.reduce((a, b) => a + b, 0);
   return sum;
 }
 
-solution(12); // 28
-solution(5); // 6
+function solution2(n) {
+  let sum = 0;
+  for (let i = 0; i <= n; i++) {
+    if (n % i === 0) sum += i;
+  }
+  console.log(sum);
+  return sum;
+}
 
+solution(12); // 28
+solution2(5); // 6
+solution(0);
 /**
  * 풀이
  * 1. 1부터 n까지의 자연수를 순회하면서 n 나누기 i의 나머지가 0이 되는 i를 구함
