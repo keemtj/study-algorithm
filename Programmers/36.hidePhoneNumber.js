@@ -19,11 +19,25 @@
 //   return answer;
 // }
 
+// function solution(phoneNumber) {
+//   const last4Digits = phoneNumber.slice(-4);
+//   const answer = '*'.repeat(phoneNumber.length - 4) + last4Digits;
+//   console.log(answer);
+//   return answer;
+// }
+
+// function solution(phoneNumber) {
+//   const first4Digits = phoneNumber.slice(0, 4);
+//   const answer = first4Digits.padEnd(phoneNumber.length, '*');
+//   console.log(answer);
+//   return '';
+// }
+
 function solution(phoneNumber) {
-  const last4Digits = phoneNumber.slice(-4);
-  const answer = '*'.repeat(phoneNumber.length - 4) + last4Digits;
+  const first4Digits = phoneNumber.slice(0, 4);
+  const answer = first4Digits + '*'.repeat(phoneNumber.length - 4, '*');
   console.log(answer);
-  return answer;
+  return '';
 }
 solution('0277778888'); // '******8888'
 
