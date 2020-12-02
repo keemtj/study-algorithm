@@ -6,7 +6,7 @@
 
 function solution(x) {
   const num = [...`${x}`].map(v => parseInt(v, 12)).reduce((a, b) => a + b, 0);
-  const harshad = x % num ? false : true;
+  const harshad = !(x % num);
   return harshad;
 }
 
